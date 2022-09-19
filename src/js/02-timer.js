@@ -21,7 +21,7 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  //   minDate: 'today',
+  
   onClose(selectedDates) {
     let date = new Date();
     if (selectedDates[0] <= date) {
@@ -30,13 +30,14 @@ const options = {
     }
     if (selectedDates[0] > date) {
       timeLeft = selectedDates[0].getTime() - date.getTime();
-
+// console.log(timeLeft)
       refs.startBtnEl.disabled = false;
     }
   },
 };
+// викликаєм бібліотеку
 flatpickr('#datetime-picker', options);
-
+// вішаєм слухачів на подію клік
 refs.startBtnEl.addEventListener('click', convertMs);
 refs.stopBtnEl.addEventListener('click', stopCounter);
 refs.resetBtnEl.addEventListener('click', resetCounter);
